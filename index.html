@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BeeLog - Mockup</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>BeeLog</h1>
+    <p>Organizează-ți stupina și monitorizează starea fiecărui stup.</p>
+    <p class="app-count">3 stupi, dintre care 2 activi</p>
+  </header>
+
+  <main class="container">
+    <section class="panel">
+      <h2>Adaugă stup</h2>
+      <form class="item-form">
+        <label>
+          Identificator / Nume stup
+          <input type="text" name="nume" placeholder="Ex: Stupul 01 - Salcâm" required />
+        </label>
+        <label>
+          Puterea familiei
+          <select name="putere">
+            <option value="puternica" selected>Puternică</option>
+            <option value="medie">Medie</option>
+            <option value="slaba">Slabă</option>
+          </select>
+        </label>
+        <button type="submit">Adaugă</button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2>Stupii mei</h2>
+      <!-- Când lista e goală: <p class="empty">Nu există niciun stup adăugat.</p> -->
+      <ul class="item-list">
+        <li class="item-card">
+          <div>
+            <h3>Stupul 01 - Salcâm</h3>
+            <span class="badge badge-puternica">Puternică</span>
+          </div>
+          <span class="status">De inspectat</span>
+        </li>
+        <li class="item-card done">
+          <div>
+            <h3>Stupul 02 - Tei</h3>
+            <span class="badge badge-medie">Medie</span>
+          </div>
+          <span class="status">Inspectat</span>
+        </li>
+        <li class="item-card">
+          <div>
+            <h3>Stupul 03 - Polifloră</h3>
+            <span class="badge badge-slaba">Slabă</span>
+          </div>
+          <span class="status">De inspectat</span>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="app-footer">Proiect Tehnologii Web</footer>
+</body>
+</html>

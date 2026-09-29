@@ -1,0 +1,201 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #fdfbf7;
+  --card: #ffffff;
+  --text: #2c2519;
+  --muted: #786f60;
+  --accent: #d97706;
+  --accent-dark: #b45309;
+  --accent-soft: #fef3c7;
+  --border: #f1e8d6;
+
+  --badge-puternica: #16a34a;
+  --badge-medie: #d97706;
+  --badge-slaba: #dc2626;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #15130e;
+    --card: #201c15;
+    --text: #fef9ee;
+    --muted: #9c9384;
+    --border: #383125;
+    --accent: #f59e0b;
+    --accent-dark: #fbbf24;
+    --accent-soft: #3b2a0c;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.app-header {
+  background-color: var(--accent);
+  color: #ffffff;
+  text-align: center;
+  padding: 32px 16px;
+}
+
+.app-header h1 {
+  margin: 0 0 8px 0;
+  font-size: 2rem;
+}
+
+.app-header p {
+  margin: 4px 0;
+}
+
+.app-count {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 24px auto;
+  padding: 0 16px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.panel {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px;
+}
+
+.panel h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+}
+
+.item-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.item-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.item-form input,
+.item-form select {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background-color: var(--card);
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.item-form button {
+  padding: 10px 16px;
+  background-color: var(--accent);
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.item-form button:hover {
+  background-color: var(--accent-dark);
+}
+
+.item-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.item-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background-color: var(--card);
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.item-card:hover {
+  border-color: var(--accent);
+  background-color: var(--accent-soft);
+}
+
+.item-card h3 {
+  margin: 0 0 6px 0;
+  font-size: 1.05rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.badge-puternica {
+  background-color: var(--badge-puternica);
+}
+
+.badge-medie {
+  background-color: var(--badge-medie);
+}
+
+.badge-slaba {
+  background-color: var(--badge-slaba);
+}
+
+.status {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.item-card.done h3 {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (max-width: 700px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.app-footer {
+  text-align: center;
+  padding: 24px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
