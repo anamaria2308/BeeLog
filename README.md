@@ -26,8 +26,8 @@ Details per stage: see the ai-log/ folder.
 Open index.html in a browser. No build step, no server.
 
 ## Status
-- [ ] Stage 1: static mockup
-- [ ] Stage 2: data logic in JavaScript
+- [x] Stage 1: static mockup
+- [x] Stage 2: data logic in JavaScript
 ## Verification Checklist - Stage 1
 
 | ID | Requirement | Where (permalink) | How to check |
@@ -40,3 +40,18 @@ Open index.html in a browser. No build step, no server.
 | S1-R6 | 2 columns on desktop, 1 under 700px | [style.css#L172-L176](https://github.com/anamaria2308/BeeLog/blob/73368e6/style.css#L172-L176) | resize < 700px |
 | S1-R7 | visible focus, readable dark theme | [style.css#L167-L170](https://github.com/anamaria2308/BeeLog/blob/73368e6/style.css#L167-L170) | Tab; dark mode |
 | S1-R8 | commit "Stage 1" pushed | [Commit link](https://github.com/anamaria2308/BeeLog/commit/73368e6) | commit history |
+
+## Stage 2: data logic
+Plain JavaScript, no DOM. stupi.js holds the array and the functions that read and change it. Results are printed in the browser console (F12).
+
+## Verification Checklist - Stage 2
+
+| ID | Requirement | Where (permalink) | How to check |
+| :--- | :--- | :--- | :--- |
+| S2-R1 | JS file linked, logs on page load | [index.html#L66](https://github.com/anamaria2308/BeeLog/blob/main/index.html#L66) | open page, F12 |
+| S2-R2 | 3+ items with id, name, state, tag | [stupi.js#L2-L6](https://github.com/anamaria2308/BeeLog/blob/main/stupi.js#L2-L6) | read |
+| S2-R3 | list, count, search, add, toggle, delete | [stupi.js#L11-L69](https://github.com/anamaria2308/BeeLog/blob/main/stupi.js#L11-L69) | console output |
+| S2-R4 | add rejects empty name and invalid tag | [stupi.js#L30-L38](https://github.com/anamaria2308/BeeLog/blob/main/stupi.js#L30-L38) | last 2 console lines |
+| S2-R5 | original array unchanged after add | [stupi.js#L81](https://github.com/anamaria2308/BeeLog/blob/main/stupi.js#L81) | console line |
+| S2-R6 | README Stage 2 section + AI log | [README.md](README.md), [ai-log/etapa-02.md](ai-log/etapa-02.md) | read |
+| S2-R7 | commit "Stage 2" pushed | [Commits](https://github.com/anamaria2308/BeeLog/commits/main) | commit history |
