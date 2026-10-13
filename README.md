@@ -69,3 +69,14 @@ Then open the address printed in the terminal (http://localhost:5173).
 
 ## Stage 3: Vite and React project
 The app now lives in frontend/, built with Vite. The data from stage 2 moved into the main component; the list is still printed raw.
+## Verification Checklist - Stage 3
+
+| ID | Requirement | Where (permalink) | How to check |
+| :--- | :--- | :--- | :--- |
+| S3-R1 | npm run dev starts without errors | [frontend/package.json](frontend/package.json) | npm install, npm run dev |
+| S3-R2 | app name and counter computed from data | [frontend/src/App.jsx#L9-L21](frontend/src/App.jsx#L9-L21) | edit data, save |
+| S3-R3 | data from README, not from the example | [frontend/src/App.jsx#L2-L6](frontend/src/App.jsx#L2-L6) | compare with README |
+| S3-R4 | stage 1 styles reused | [frontend/src/App.css](frontend/src/App.css) | look at the page |
+| S3-R5 | node_modules ignored, build passes | [frontend/.gitignore](frontend/.gitignore) | npm run build |
+| S3-R6 | README Stage 3 section + AI log | [README.md](README.md), [ai-log/etapa-03.md](ai-log/etapa-03.md) | read |
+| S3-R7 | commit "Stage 3" pushed | [Commits](https://github.com/anamaria2308/BeeLog/commits/main) | commit history |
