@@ -55,3 +55,17 @@ Plain JavaScript, no DOM. stupi.js holds the array and the functions that read a
 | S2-R5 | original array unchanged after add | [stupi.js#L81](https://github.com/anamaria2308/BeeLog/blob/main/stupi.js#L81) | console line |
 | S2-R6 | README Stage 2 section + AI log | [README.md](README.md), [ai-log/etapa-02.md](ai-log/etapa-02.md) | read |
 | S2-R7 | commit "Stage 2" pushed | [Commits](https://github.com/anamaria2308/BeeLog/commits/main) | commit history |
+
+## How to run
+cd frontend
+npm install
+npm run dev
+Then open the address printed in the terminal (http://localhost:5173).
+
+## Status
+- [x] Stage 1: static mockup
+- [x] Stage 2: data logic in JavaScript
+- [x] Stage 3: Vite and React project
+
+## Stage 3: Vite and React project
+The app now lives in frontend/, built with Vite. The data from stage 2 moved into the main component; the list is still printed raw.
