@@ -86,3 +86,14 @@ The app now lives in frontend/, built with Vite. The data from stage 2 moved int
 The list is rendered from the data, through two components:
 - 'StupList' receives the whole array and renders one card per item.
 - 'StupCard' receives a single item through props and displays it.
+## Verification Checklist - Stage 4
+
+| ID | Requirement | Where (permalink) | How to check |
+| :--- | :--- | :--- | :--- |
+| S4-R1 | 2+ components in src/components/ | [frontend/src/components/](frontend/src/components/) | open folder |
+| S4-R2 | card receives data through props | [frontend/src/components/StupCard.jsx#L8](frontend/src/components/StupCard.jsx#L8) | read |
+| S4-R3 | map + key={id}, no console warnings | [frontend/src/components/StupList.jsx#L12](frontend/src/components/StupList.jsx#L12) | F12, Console |
+| S4-R4 | message for empty list | [frontend/src/components/StupList.jsx#L4-L6](frontend/src/components/StupList.jsx#L4-L6) | set array to [] |
+| S4-R5 | state changes the card look | [frontend/src/components/StupCard.jsx#L10](frontend/src/components/StupCard.jsx#L10) | toggle a done flag |
+| S4-R6 | README Stage 4 section + AI log | [README.md](README.md), [ai-log/etapa-04.md](ai-log/etapa-04.md) | read |
+| S4-R7 | commit "Stage 4" pushed | [Commits](https://github.com/anamaria2308/BeeLog/commits/main) | commit history |
