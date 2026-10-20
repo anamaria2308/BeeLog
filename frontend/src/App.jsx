@@ -1,4 +1,5 @@
-// Datele de test deasupra funcției (nu se recreează la fiecare randare)
+import StupList from "./components/StupList.jsx";
+
 const stupi = [
   { id: 1, nume: "Stupul 01 - Salcâm", inspectat: false, putere: "puternica" },
   { id: 2, nume: "Stupul 02 - Tei", inspectat: true, putere: "medie" },
@@ -6,7 +7,6 @@ const stupi = [
 ];
 
 export default function App() {
-  // Calculăm numărul de stupi neinspectați (activi)
   const active = stupi.filter((s) => !s.inspectat).length;
 
   return (
@@ -15,15 +15,14 @@ export default function App() {
         <h1>BeeLog</h1>
         <p>Organizează-ți stupina și monitorizează starea fiecărui stup.</p>
         <p className="app-count">
-          {stupi.length} stupi, dintre care {active} activi
+          {stupi.length} stupi, dintre care {active} de inspectat
         </p>
       </header>
 
       <main className="container">
         <section className="panel">
           <h2>Stupii mei</h2>
-          {/* Temporar: date brute afișate ca JSON conform cerințelor etapei */}
-          <pre>{JSON.stringify(stupi, null, 2)}</pre>
+          <StupList stupi={stupi} />
         </section>
       </main>
     </>

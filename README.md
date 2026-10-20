@@ -66,6 +66,7 @@ Then open the address printed in the terminal (http://localhost:5173).
 - [x] Stage 1: static mockup
 - [x] Stage 2: data logic in JavaScript
 - [x] Stage 3: Vite and React project
+- [x] Stage 4: components rendered from data
 
 ## Stage 3: Vite and React project
 The app now lives in frontend/, built with Vite. The data from stage 2 moved into the main component; the list is still printed raw.
@@ -80,3 +81,8 @@ The app now lives in frontend/, built with Vite. The data from stage 2 moved int
 | S3-R5 | node_modules ignored, build passes | [frontend/.gitignore](frontend/.gitignore) | npm run build |
 | S3-R6 | README Stage 3 section + AI log | [README.md](README.md), [ai-log/etapa-03.md](ai-log/etapa-03.md) | read |
 | S3-R7 | commit "Stage 3" pushed | [Commits](https://github.com/anamaria2308/BeeLog/commits/main) | commit history |
+
+## Stage 4: components
+The list is rendered from the data, through two components:
+- 'StupList' receives the whole array and renders one card per item.
+- 'StupCard' receives a single item through props and displays it.
