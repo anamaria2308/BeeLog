@@ -67,6 +67,7 @@ Then open the address printed in the terminal (http://localhost:5173).
 - [x] Stage 2: data logic in JavaScript
 - [x] Stage 3: Vite and React project
 - [x] Stage 4: components rendered from data
+- [x] Stage 5: local state and events
 
 ## Stage 3: Vite and React project
 The app now lives in frontend/, built with Vite. The data from stage 2 moved into the main component; the list is still printed raw.
@@ -97,3 +98,9 @@ The list is rendered from the data, through two components:
 | S4-R5 | state changes the card look | [frontend/src/components/StupCard.jsx#L10](frontend/src/components/StupCard.jsx#L10) | toggle a done flag |
 | S4-R6 | README Stage 4 section + AI log | [README.md](README.md), [ai-log/etapa-04.md](ai-log/etapa-04.md) | read |
 | S4-R7 | commit "Stage 4" pushed | [Commits](https://github.com/anamaria2308/BeeLog/commits/main) | commit history |
+
+## Stage 5: local state and events
+The list lives in React state. Checking and deleting work from the page,
+and the counters in the header follow automatically. A button in the
+header switches between light and dark mode. Changes are lost on refresh,
+which is what stage 6 and stage 10 fix.
