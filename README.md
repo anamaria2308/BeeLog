@@ -125,6 +125,7 @@ and shows a loading state and an error state.
 ```bash
 npm run api    # terminal 1, http://localhost:3001
 npm run dev    # terminal 2, http://localhost:5173
+```
 
 ## Verification Checklist - Stage 6
 
