@@ -68,6 +68,7 @@ Then open the address printed in the terminal (http://localhost:5173).
 - [x] Stage 3: Vite and React project
 - [x] Stage 4: components rendered from data
 - [x] Stage 5: local state and events
+- [x] Stage 6: data from a mock API
 
 ## Stage 3: Vite and React project
 The app now lives in frontend/, built with Vite. The data from stage 2 moved into the main component; the list is still printed raw.
@@ -116,3 +117,10 @@ which is what stage 6 and stage 10 fix.
 | S5-R6 | light/dark toggle: state + data-theme on html | [frontend/src/App.jsx#L33-L37](frontend/src/App.jsx#L33-L37), [frontend/src/App.css#L39-L49](frontend/src/App.css#L39-L49) | click the button, both system themes |
 | S5-R7 | no console warnings; README + AI log | [README.md](README.md), [ai-log/etapa-05.md](ai-log/etapa-05.md) | F12, Console |
 | S5-R8 | commit "Stage 5" pushed | [Commits](https://github.com/anamaria2308/BeeLog/commits/main) | commit history |
+## Stage 6: data from a mock API
+The list is served by json-server from db.json. The app fetches it on load
+and shows a loading state and an error state.
+
+```bash
+npm run api    # terminal 1, http://localhost:3001
+npm run dev    # terminal 2, http://localhost:5173

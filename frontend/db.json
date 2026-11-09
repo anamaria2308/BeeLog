@@ -1,0 +1,9 @@
+{
+  "stupi": [
+    { "id": 1, "nume": "Stupul 01 - Salcâm", "inspectat": false, "putere": "puternica" },
+    { "id": 2, "nume": "Stupul 02 - Tei", "inspectat": true, "putere": "medie" },
+    { "id": 3, "nume": "Stupul 03 - Polifloră", "inspectat": false, "putere": "slaba" },
+    { "id": 4, "nume": "Stupul 04 - Rapiță", "inspectat": false, "putere": "puternica" },
+    { "id": 5, "nume": "Stupul 05 - Floarea Soarelui", "inspectat": true, "putere": "medie" }
+  ]
+}

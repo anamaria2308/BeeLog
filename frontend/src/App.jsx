@@ -1,42 +1,60 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import StupList from "./components/StupList.jsx";
+import { fetchStupi } from "./api.js";
 
-// Datele temei: valoarea inițială
-const STUPI_INITIALI = [
-  { id: 1, nume: "Stupul 01 - Salcâm", inspectat: false, putere: "puternica" },
-  { id: 2, nume: "Stupul 02 - Tei", inspectat: true, putere: "medie" },
-  { id: 3, nume: "Stupul 03 - Polifloră", inspectat: false, putere: "slaba" }
-];
-
-// Citește tema sistemului de operare la prima randare
 function temaInitiala() {
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
 export default function App() {
-  const [stupi, setStupi] = useState(STUPI_INITIALI);
+  const [stupi, setStupi] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [tema, setTema] = useState(temaInitiala);
 
-  // Actualizare imutabilă pentru comutarea stării de inspecție
+  useEffect(() => {
+    let ignore = false;
+
+    async function load() {
+      try {
+        const data = await fetchStupi();
+        if (!ignore) {
+          setStupi(data);
+        }
+      } catch (err) {
+        if (!ignore) {
+          setError(err.message);
+        }
+      } finally {
+        if (!ignore) {
+          setLoading(false);
+        }
+      }
+    }
+
+    load();
+
+    return () => {
+      ignore = true;
+    };
+  }, []);
+
   function handleToggle(id) {
     setStupi((prev) =>
       prev.map((s) => (s.id === id ? { ...s, inspectat: !s.inspectat } : s))
     );
   }
 
-  // Actualizare imutabilă pentru ștergerea unui stup
   function handleDelete(id) {
     setStupi((prev) => prev.filter((s) => s.id !== id));
   }
 
-  // Comutarea temei Light / Dark
   function handleTema() {
     const noua = tema === "dark" ? "light" : "dark";
     setTema(noua);
     document.documentElement.dataset.theme = noua;
   }
 
-  // Valori derivate (recalculate la fiecare randare)
   const inspectati = stupi.filter((s) => s.inspectat).length;
   const active = stupi.length - inspectati;
   const procent = stupi.length > 0 ? Math.round((inspectati / stupi.length) * 100) : 0;
@@ -82,11 +100,22 @@ export default function App() {
             <h2>📋 Stupii mei</h2>
             <span className="badge-counter">{stupi.length} total</span>
           </div>
-          <StupList
-            stupi={stupi}
-            onToggle={handleToggle}
-            onDelete={handleDelete}
-          />
+
+          {loading && <p className="info">Se încarcă stupii din stupină...</p>}
+
+          {error && (
+            <p className="error">
+              Nu am putut încărca datele: {error}. Rulează <code>npm run api</code>?
+            </p>
+          )}
+
+          {!loading && !error && (
+            <StupList
+              stupi={stupi}
+              onToggle={handleToggle}
+              onDelete={handleDelete}
+            />
+          )}
         </section>
       </main>
     </>
