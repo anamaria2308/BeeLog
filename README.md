@@ -124,3 +124,15 @@ and shows a loading state and an error state.
 ```bash
 npm run api    # terminal 1, http://localhost:3001
 npm run dev    # terminal 2, http://localhost:5173
+
+## Verification Checklist - Stage 6
+
+| ID | Requirement | Where (permalink) | How to check |
+| :--- | :--- | :--- | :--- |
+| S6-R1 | npm run api starts, route shows JSON | [frontend/package.json](frontend/package.json), [frontend/db.json](frontend/db.json) | open localhost:3001/stupi |
+| S6-R2 | data no longer in React code | [frontend/src/App.jsx#L11](frontend/src/App.jsx#L11) | read |
+| S6-R3 | loading message while waiting | [frontend/src/App.jsx#L102](frontend/src/App.jsx#L102) | --delay 4000 |
+| S6-R4 | error message when API is down | [frontend/src/App.jsx#L104-L108](frontend/src/App.jsx#L104-L108) | stop npm run api, refresh |
+| S6-R5 | fetch only in api.js, URL from env | [frontend/src/api.js](frontend/src/api.js), [frontend/.env.example](frontend/.env.example) | search for fetch |
+| S6-R6 | README Stage 6 section + AI log | [README.md](README.md), [ai-log/etapa-06.md](ai-log/etapa-06.md) | read |
+| S6-R7 | commit "Stage 6" pushed | [Commits](https://github.com/anamaria2308/BeeLog/commits/main) | commit history |
