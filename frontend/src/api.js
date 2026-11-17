@@ -18,6 +18,10 @@ export function fetchStupi() {
   return request("/stupi");
 }
 
+export function fetchStup(id) {
+  return request(`/stupi/${id}`);
+}
+
 export function createStup(stup) {
   return request("/stupi", { method: "POST", body: JSON.stringify(stup) });
 }

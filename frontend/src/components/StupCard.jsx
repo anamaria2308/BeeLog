@@ -1,37 +1,47 @@
-const ETICHETE_PUTERE = {
-  slaba: "Slabă",
-  medie: "Medie",
-  puternica: "Puternică",
-};
+import { Link } from "react-router-dom";
+import { ETICHETE_PUTERE } from "../constants.js";
+import PutereMeter from "./PutereMeter.jsx";
+import styles from "./StupCard.module.css";
 
-export default function StupCard({ stup, onToggle, onDelete }) {
+export default function StupCard({ stup, index = 0, onToggle, onDelete }) {
+  // banda colorata din stanga cardului urmeaza puterea coloniei
+  const clase = [styles.card, styles[stup.putere], stup.inspectat ? styles.done : ""].join(" ");
+
   return (
     <li
-      className={stup.inspectat ? "task-card done" : "task-card"}
+      className={clase}
+      style={{ "--i": index }} // fiecare card intra in pagina putin dupa cel de deasupra
       data-testid="item"
       data-id={stup.id}
     >
-      <label className="task-main">
+      <div className={styles.main}>
         <input
           type="checkbox"
           checked={stup.inspectat}
           onChange={() => onToggle(stup.id)}
+          aria-label={`Marchează ${stup.nume} ca inspectat`}
           data-testid="item-toggle"
         />
-        <div className="card-left">
-          <div className="hive-icon">🐝</div>
-          <div>
-            <h3 data-testid="item-title">{stup.nume}</h3>
-            <span className={`badge badge-${stup.putere}`}>
-              Putere: {ETICHETE_PUTERE[stup.putere]}
-            </span>
-          </div>
+        <div className={styles.icon} aria-hidden="true">
+          🐝
         </div>
-      </label>
+        <div>
+          <Link to={`/stupi/${stup.id}`} className={styles.title} data-testid="item-link">
+            {stup.nume}
+          </Link>
+          <span className={styles.meta}>
+            <span className={`badge badge-${stup.putere}`}>
+              <PutereMeter putere={stup.putere} />
+              {ETICHETE_PUTERE[stup.putere]}
+            </span>
+          </span>
+        </div>
+      </div>
 
-      <div className="card-right">
-        <span className="status">
-          <span className={`status-dot ${stup.inspectat ? "dot-done" : "dot-pending"}`}></span>
+      <div className={styles.right}>
+        <span className={styles.status}>
+          {/* punctul pulseaza cat timp stupul asteapta inspectia */}
+          <span className={`${styles.dot} ${stup.inspectat ? styles.dotDone : styles.dotPending}`}></span>
           {stup.inspectat ? "Inspectat" : "De inspectat"}
         </span>
 

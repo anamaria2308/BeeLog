@@ -1,0 +1,29 @@
+.meter {
+  display: inline-flex;
+  gap: 2px;
+  vertical-align: middle;
+}
+
+.hex {
+  width: 10px;
+  height: 11px;
+  clip-path: var(--hex);
+  background: var(--border-color);
+}
+
+.mare .hex {
+  width: 20px;
+  height: 22px;
+}
+
+.puternica .plin {
+  background: var(--puternica-fg);
+}
+
+.medie .plin {
+  background: var(--primary);
+}
+
+.slaba .plin {
+  background: var(--slaba-fg);
+}

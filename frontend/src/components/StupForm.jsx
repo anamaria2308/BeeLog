@@ -1,13 +1,6 @@
 import { useState } from "react";
-// Valorile fixe si limitele folosite la validare
-const PUTERI = [
-  { value: "puternica", label: "Puternică" },
-  { value: "medie", label: "Medie" },
-  { value: "slaba", label: "Slabă" },
-];
-const NUME_MAX = 100;
-const RAME_MIN = 1;
-const RAME_MAX = 20;
+import { NUME_MAX, PUTERI, RAME_MAX, RAME_MIN } from "../constants.js";
+import styles from "./StupForm.module.css";
 
 // Formular controlat: state-ul React este sursa de adevar pentru campuri
 export default function StupForm({ onAdd }) {
@@ -60,7 +53,7 @@ export default function StupForm({ onAdd }) {
   }
 
   return (
-    <form className="task-form" onSubmit={handleSubmit} noValidate data-testid="form">
+    <form className={styles.form} onSubmit={handleSubmit} noValidate data-testid="form">
       <label>
         Nume stup
         <input

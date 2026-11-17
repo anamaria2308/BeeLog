@@ -1,18 +1,25 @@
 import StupCard from "./StupCard.jsx";
+import styles from "./StupList.module.css";
 
-export default function StupList({ stupi, onToggle, onDelete }) {
+export default function StupList({ stupi, onToggle, onDelete, mesajGol }) {
   if (stupi.length === 0) {
     return (
       <p className="empty" data-testid="empty">
-        Nu există niciun stup în stupină.
+        {mesajGol ?? "Nu există niciun stup în stupină."}
       </p>
     );
   }
 
   return (
-    <ul className="task-list">
-      {stupi.map((stup) => (
-        <StupCard key={stup.id} stup={stup} onToggle={onToggle} onDelete={onDelete} />
+    <ul className={styles.list}>
+      {stupi.map((stup, index) => (
+        <StupCard
+          key={stup.id}
+          stup={stup}
+          index={index}
+          onToggle={onToggle}
+          onDelete={onDelete}
+        />
       ))}
     </ul>
   );

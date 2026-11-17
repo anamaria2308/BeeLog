@@ -33,7 +33,7 @@ npm run dev    # terminal 2, app on http://localhost:5173
 | Tool | Used for |
 | :--- | :--- |
 | Gemini | Beekeeping theme modeling, data structure mapping, HTML/CSS mockup, help with stages 2–6 |
-| Claude | Review of stages 1–6 (CSS and README fixes), form and server-side CRUD (stage 7) |
+| Claude | Review of stages 1–6 (CSS and README fixes), form and server-side CRUD (stage 7), routing, detail page and CSS Modules (stage 8) |
 
 Details per stage: see the ai-log/ folder.
 
@@ -45,7 +45,8 @@ Details per stage: see the ai-log/ folder.
 - [x] Stage 5: local state and events
 - [x] Stage 6: data from a mock API
 - [x] Stage 7: form and validation
-- [ ] Stage 8: routing and detail page
+- [x] Stage 8: routing and detail page
+- [ ] Stage 9: own backend with Express
 
 ## Stage 1: static mockup
 Plain HTML and CSS in `mockup/`: header, add form, three hive cards, two columns on
@@ -158,3 +159,12 @@ prepare the app for automated checking.
 | S7-R6 | tw.json and the data-testid attributes from table 7.3 | [tw.json](https://github.com/anamaria2308/BeeLog/blob/b1bc735/tw.json), [StupCard.jsx#L9-L48](https://github.com/anamaria2308/BeeLog/blob/b1bc735/frontend/src/components/StupCard.jsx#L9-L48), [StupForm.jsx](https://github.com/anamaria2308/BeeLog/blob/b1bc735/frontend/src/components/StupForm.jsx) | querySelectorAll in the console |
 | S7-R7 | README Stage 7 section + AI log | [README.md](README.md), [ai-log/etapa-07.md](ai-log/etapa-07.md) | read |
 | S7-R8 | commit "Stage 7" pushed | [b1bc735](https://github.com/anamaria2308/BeeLog/commit/b1bc735) | commit history |
+
+## Stage 8: routing and detail page
+Pages behind React Router: the list at `/`, a detail page at `/stupi/:id`, an about page
+at `/despre`, plus a 404 page. Header, navigation and footer are written once, in `Layout`.
+Component styles moved to CSS Modules; `index.css` keeps only the colour variables and the
+shared classes. The interface got an apiary look: honeycomb background, honey header,
+hexagon icons, a colony-strength meter (`PutereMeter`) and the hive frames drawn on the detail page.
+The list page also has a greeting banner with today's date, search and status filters (`FiltruBar`),
+entry animations for the cards and a short notification after adding or deleting (`Toast`).

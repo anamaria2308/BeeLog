@@ -1,0 +1,35 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.form input,
+.form select {
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 400;
+  background: var(--card-bg);
+  color: var(--text-main);
+}
+
+/* Campul gresit, marcat prin aria-invalid */
+.form input[aria-invalid="true"] {
+  border-color: var(--danger);
+  box-shadow: 0 0 0 1px var(--danger);
+}
+
+/* .error este clasa globala din index.css */
+.form :global(.error) {
+  margin: 0;
+}

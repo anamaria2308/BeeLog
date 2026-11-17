@@ -1,0 +1,201 @@
+.card {
+  --banda: var(--border-color);
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px 14px 22px;
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  background-color: var(--card-bg);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  /* intrare in pagina: cardurile apar pe rand, la 50 ms unul dupa altul */
+  animation: apare 0.35s ease-out backwards;
+  animation-delay: calc(var(--i, 0) * 50ms);
+}
+
+@keyframes apare {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* banda din stanga, colorata dupa puterea coloniei */
+.card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background: var(--banda);
+}
+
+.puternica {
+  --banda: var(--puternica-fg);
+}
+
+.medie {
+  --banda: var(--primary);
+}
+
+.slaba {
+  --banda: var(--slaba-fg);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--card-shadow-hover);
+  border-color: var(--primary);
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+  min-width: 0;
+}
+
+.main input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--success);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* iconita in forma de celula de fagure */
+.icon {
+  width: 46px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  font-size: 1.35rem;
+  flex-shrink: 0;
+  background: var(--honey-gradient);
+  clip-path: var(--hex);
+}
+
+.title {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-main);
+  text-decoration: none;
+}
+
+.title:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.meta {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Starea Inspectat */
+.done {
+  background-color: var(--bg-color);
+  box-shadow: none;
+}
+
+.done .title {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+.done .icon {
+  filter: grayscale(0.6) opacity(0.7);
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 999px;
+  color: var(--primary-dark);
+  background-color: var(--primary-light);
+  border: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.done .status {
+  color: var(--success);
+  background-color: transparent;
+  border-color: var(--success);
+}
+
+.dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+/* Puls care atrage atentia asupra stupilor neinspectati */
+@keyframes pulse-attention {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.8);
+  }
+  70% {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 7px rgba(245, 158, 11, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
+  }
+}
+
+.dotPending {
+  background-color: #f59e0b;
+  animation: pulse-attention 1.6s infinite ease-in-out;
+}
+
+.dotDone {
+  background-color: var(--success);
+  box-shadow: 0 0 4px var(--success);
+}
+
+/* Fara animatie pentru cine a cerut miscare redusa in sistem */
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .dotPending {
+    animation: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .right {
+    justify-content: space-between;
+  }
+}
