@@ -168,3 +168,15 @@ shared classes. The interface got an apiary look: honeycomb background, honey he
 hexagon icons, a colony-strength meter (`PutereMeter`) and the hive frames drawn on the detail page.
 The list page also has a greeting banner with today's date, search and status filters (`FiltruBar`),
 entry animations for the cards and a short notification after adding or deleting (`Toast`).
+
+### Verification Checklist - Stage 8
+| ID | Requirement | Where (permalink) | How to check |
+| :--- | :--- | :--- | :--- |
+| S8-R1 | header navigation changes page without reload | [App.jsx#L10-L21](https://github.com/anamaria2308/BeeLog/blob/d72268e/frontend/src/App.jsx#L10-L21), [Layout.jsx#L39-L46](https://github.com/anamaria2308/BeeLog/blob/d72268e/frontend/src/components/Layout.jsx#L39-L46) | click links, watch Network |
+| S8-R2 | click on an item opens its detail page | [StupCard.jsx#L29-L31](https://github.com/anamaria2308/BeeLog/blob/d72268e/frontend/src/components/StupCard.jsx#L29-L31), [StupDetaliuPage.jsx](https://github.com/anamaria2308/BeeLog/blob/d72268e/frontend/src/pages/StupDetaliuPage.jsx) | click a title |
+| S8-R3 | refresh on the detail URL works; missing id shows an error | [StupDetaliuPage.jsx#L15-L54](https://github.com/anamaria2308/BeeLog/blob/d72268e/frontend/src/pages/StupDetaliuPage.jsx#L15-L54) | refresh /stupi/1, open /stupi/999 |
+| S8-R4 | unknown URL shows the app 404 page | [App.jsx#L17](https://github.com/anamaria2308/BeeLog/blob/d72268e/frontend/src/App.jsx#L17) (path="*"), [NotFoundPage.jsx](https://github.com/anamaria2308/BeeLog/blob/d72268e/frontend/src/pages/NotFoundPage.jsx) | open /ceva |
+| S8-R5 | each component has its .module.css; index.css only shared styles | [src/components](https://github.com/anamaria2308/BeeLog/blob/d72268e/frontend/src/components), [src/pages](https://github.com/anamaria2308/BeeLog/blob/d72268e/frontend/src/pages), [index.css](https://github.com/anamaria2308/BeeLog/blob/d72268e/frontend/src/index.css) | read |
+| S8-R6 | data-testid attributes from tables 7.3 and 8.2; detail route /stupi/:id | [Layout.jsx#L39](https://github.com/anamaria2308/BeeLog/blob/d72268e/frontend/src/components/Layout.jsx#L39), [StupCard.jsx](https://github.com/anamaria2308/BeeLog/blob/d72268e/frontend/src/components/StupCard.jsx), [StupDetaliuPage.jsx#L60-L72](https://github.com/anamaria2308/BeeLog/blob/d72268e/frontend/src/pages/StupDetaliuPage.jsx#L60-L72), [NotFoundPage.jsx#L5](https://github.com/anamaria2308/BeeLog/blob/d72268e/frontend/src/pages/NotFoundPage.jsx#L5) | querySelector in the console |
+| S8-R7 | README Stage 8 section + AI log | [README.md](README.md), [ai-log/etapa-08.md](ai-log/etapa-08.md) | read |
+| S8-R8 | commit "Stage 8" pushed | [d72268e](https://github.com/anamaria2308/BeeLog/commit/d72268e) | commit history |
