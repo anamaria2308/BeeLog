@@ -1,22 +1,27 @@
 const ETICHETE_PUTERE = {
   slaba: "Slabă",
   medie: "Medie",
-  puternica: "Puternică"
+  puternica: "Puternică",
 };
 
 export default function StupCard({ stup, onToggle, onDelete }) {
   return (
-    <li className={stup.inspectat ? "task-card done" : "task-card"}>
+    <li
+      className={stup.inspectat ? "task-card done" : "task-card"}
+      data-testid="item"
+      data-id={stup.id}
+    >
       <label className="task-main">
         <input
           type="checkbox"
           checked={stup.inspectat}
           onChange={() => onToggle(stup.id)}
+          data-testid="item-toggle"
         />
         <div className="card-left">
           <div className="hive-icon">🐝</div>
           <div>
-            <h3>{stup.nume}</h3>
+            <h3 data-testid="item-title">{stup.nume}</h3>
             <span className={`badge badge-${stup.putere}`}>
               Putere: {ETICHETE_PUTERE[stup.putere]}
             </span>
@@ -35,6 +40,7 @@ export default function StupCard({ stup, onToggle, onDelete }) {
           className="btn-danger"
           onClick={() => onDelete(stup.id)}
           aria-label={`Șterge ${stup.nume}`}
+          data-testid="item-delete"
         >
           Șterge
         </button>

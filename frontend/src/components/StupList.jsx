@@ -2,18 +2,17 @@ import StupCard from "./StupCard.jsx";
 
 export default function StupList({ stupi, onToggle, onDelete }) {
   if (stupi.length === 0) {
-    return <p className="empty">Nu există niciun stup în stupină.</p>;
+    return (
+      <p className="empty" data-testid="empty">
+        Nu există niciun stup în stupină.
+      </p>
+    );
   }
 
   return (
     <ul className="task-list">
       {stupi.map((stup) => (
-        <StupCard
-          key={stup.id}
-          stup={stup}
-          onToggle={onToggle}
-          onDelete={onDelete}
-        />
+        <StupCard key={stup.id} stup={stup} onToggle={onToggle} onDelete={onDelete} />
       ))}
     </ul>
   );
