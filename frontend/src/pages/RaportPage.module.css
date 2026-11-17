@@ -1,0 +1,168 @@
+.raport {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* Bara cu butonul de export; nu apare in PDF */
+.actiuni {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 12px 16px;
+  margin-bottom: 22px;
+  border-radius: 12px;
+  background: var(--primary-light);
+  border: 1px solid var(--border-color);
+  font-size: 0.9rem;
+}
+
+.antet {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 14px;
+  border-bottom: 3px solid var(--primary);
+}
+
+.antet h2 {
+  margin-bottom: 2px;
+}
+
+.generat {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+.procent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.1;
+}
+
+.procent span {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primary-dark);
+}
+
+.procent small {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.sumar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin: 16px 0 20px;
+}
+
+.sumar div {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.sumar strong {
+  display: block;
+  font-size: 1.4rem;
+  color: var(--text-main);
+}
+
+.tabel {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.tabel th {
+  text-align: left;
+  padding: 8px 10px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  border-bottom: 2px solid var(--border-color);
+}
+
+.tabel td {
+  padding: 9px 10px;
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: top;
+}
+
+.tabel tbody tr:nth-child(even) {
+  background: var(--bg-color);
+}
+
+.nume {
+  font-weight: 700;
+  min-width: 150px;
+}
+
+.data {
+  white-space: nowrap;
+}
+
+.stare {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.inspectat {
+  color: var(--puternica-fg);
+}
+
+.in-curs {
+  color: var(--medie-fg);
+}
+
+.de-inspectat {
+  color: var(--slaba-fg);
+}
+
+.lipsa {
+  min-width: 170px;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+
+.subsol {
+  margin-top: 18px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 700px) {
+  .sumar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tabel {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+@media print {
+  .actiuni {
+    display: none;
+  }
+
+  .raport {
+    max-width: none;
+  }
+
+  .tabel tr {
+    break-inside: avoid;
+  }
+}

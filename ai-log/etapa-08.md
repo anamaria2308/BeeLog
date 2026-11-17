@@ -39,6 +39,15 @@ Asked: Make the interface look better and closer to the beekeeping theme.
 - Changed: the strength colours were swapped so they make sense for a beekeeper: a strong colony is
   green and a weak one red. The `data-testid` attributes and the logic stayed the same.
 
+### 5. Inspection criteria and PDF export (after stage 8)
+Asked: Mark a hive as inspected automatically from criteria ticked by the beekeeper, and export the data as PDF.
+- Got: `src/inspectie.js` with the 6 criteria and pure functions (`stareInspectie`, `comutaCriteriu`,
+  `marcheazaTot`), an `InspectieChecklist` component on the detail page that saves every tick with PATCH,
+  three states on the card (de inspectat / în curs x/6 / inspectat) and a `/raport` page printed to PDF
+  with `window.print()` and `@media print` rules.
+- Changed: a PDF library (jsPDF) was not used, because the browser's "Save as PDF" gives the same result
+  without a new dependency. The card checkbox was kept so the automated checks from stage 7 still pass.
+
 ## What I learned / what did not work
 `<Link>` changes only the address and React draws the right page, so no HTML document is requested.
 `useParams()` always returns text. In CSS Modules every class is local unless marked with `:global`.

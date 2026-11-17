@@ -9,6 +9,8 @@ the strength of each colony and which hives still need to be inspected.
 | inspected | `inspectat` | boolean | toggled from the list, default false |
 | colony strength | `putere` | fixed values | `puternica`, `medie`, `slaba` (Puternică, Medie, Slabă) |
 | frames | `rame` | integer | number of frames in the hive, 1–20 (from stage 7) |
+| inspection checks | `verificari` | list of criteria keys | criteria ticked at the last inspection; `inspectat` becomes true when all 6 are ticked |
+| inspection date | `dataInspectie` | date (YYYY-MM-DD) | set automatically when the inspection is complete |
 | apiary zone | – | relation | Staționar, Pastoral-Salcâm, Pastoral-Tei (from week 10) |
 | user | – | relation | the beekeeper who owns the hives (from week 11) |
 
@@ -180,3 +182,18 @@ entry animations for the cards and a short notification after adding or deleting
 | S8-R6 | data-testid attributes from tables 7.3 and 8.2; detail route /stupi/:id | [Layout.jsx#L39](https://github.com/anamaria2308/BeeLog/blob/d72268e/frontend/src/components/Layout.jsx#L39), [StupCard.jsx](https://github.com/anamaria2308/BeeLog/blob/d72268e/frontend/src/components/StupCard.jsx), [StupDetaliuPage.jsx#L60-L72](https://github.com/anamaria2308/BeeLog/blob/d72268e/frontend/src/pages/StupDetaliuPage.jsx#L60-L72), [NotFoundPage.jsx#L5](https://github.com/anamaria2308/BeeLog/blob/d72268e/frontend/src/pages/NotFoundPage.jsx#L5) | querySelector in the console |
 | S8-R7 | README Stage 8 section + AI log | [README.md](README.md), [ai-log/etapa-08.md](ai-log/etapa-08.md) | read |
 | S8-R8 | commit "Stage 8" pushed | [d72268e](https://github.com/anamaria2308/BeeLog/commit/d72268e) | commit history |
+
+## Extra: inspection checklist and PDF report
+Built after stage 8, on top of the same data and API.
+
+- **Inspection by criteria.** Each card has a "🔎 Inspectează" button that opens the hive's detail page
+  at its checklist (`/stupi/:id#inspectie`). The detail page has a checklist with 6 criteria (queen or fresh eggs,
+  compact brood, food reserves, no disease or varroa, no swarm cells, enough space). Each tick is
+  saved with PATCH. When all 6 are ticked the hive becomes `inspectat: true` automatically and gets
+  `dataInspectie`; with some ticked it shows "În curs 3/6". The checkbox on the card still works and
+  ticks or clears all criteria at once. The rules are plain functions in `src/inspectie.js`.
+- **PDF report.** The "Raport" page (`/raport`) lists every hive with its strength, frames, inspection
+  state, last inspection date and the criteria not yet checked. "Exportă PDF" opens the browser's
+  print dialog; choosing "Save as PDF" saves it. Print styles hide the header and buttons and keep
+  light colours even in dark mode. No extra library is needed.
+

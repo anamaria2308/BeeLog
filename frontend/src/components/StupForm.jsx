@@ -40,7 +40,14 @@ export default function StupForm({ onAdd }) {
     setCampGresit("");
     setTrimite(true);
     try {
-      await onAdd({ nume: nume.trim(), putere, rame: Number(rame), inspectat: false });
+      await onAdd({
+        nume: nume.trim(),
+        putere,
+        rame: Number(rame),
+        inspectat: false,
+        verificari: [], // niciun criteriu de inspectie bifat inca
+        dataInspectie: null,
+      });
       // golirea se face doar dupa ce serverul a confirmat salvarea
       setNume("");
       setPutere("medie");

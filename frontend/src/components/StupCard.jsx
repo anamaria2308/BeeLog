@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import { ETICHETE_PUTERE } from "../constants.js";
 import PutereMeter from "./PutereMeter.jsx";
+import { stareInspectie } from "../inspectie.js";
 import styles from "./StupCard.module.css";
 
 export default function StupCard({ stup, index = 0, onToggle, onDelete }) {
+  const { bifate, total, stare } = stareInspectie(stup);
+
   // banda colorata din stanga cardului urmeaza puterea coloniei
   const clase = [styles.card, styles[stup.putere], stup.inspectat ? styles.done : ""].join(" ");
 
@@ -34,15 +37,21 @@ export default function StupCard({ stup, index = 0, onToggle, onDelete }) {
               <PutereMeter putere={stup.putere} />
               {ETICHETE_PUTERE[stup.putere]}
             </span>
+            {/* duce la fisa stupului, unde se bifeaza criteriile inspectiei */}
+            <Link to={`/stupi/${stup.id}#inspectie`} className={styles.inspecteaza}>
+              🔎 {stup.inspectat ? "Vezi inspecția" : "Inspectează"}
+            </Link>
           </span>
         </div>
       </div>
 
       <div className={styles.right}>
-        <span className={styles.status}>
+        <span className={stare === "in-curs" ? `${styles.status} ${styles.inCurs}` : styles.status}>
           {/* punctul pulseaza cat timp stupul asteapta inspectia */}
           <span className={`${styles.dot} ${stup.inspectat ? styles.dotDone : styles.dotPending}`}></span>
-          {stup.inspectat ? "Inspectat" : "De inspectat"}
+          {stare === "inspectat" && "Inspectat"}
+          {stare === "in-curs" && `În curs ${bifate}/${total}`}
+          {stare === "de-inspectat" && "De inspectat"}
         </span>
 
         <button

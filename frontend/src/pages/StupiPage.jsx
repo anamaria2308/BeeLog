@@ -4,6 +4,7 @@ import StupForm from "../components/StupForm.jsx";
 import FiltruBar from "../components/FiltruBar.jsx";
 import Toast from "../components/Toast.jsx";
 import { createStup, deleteStup, fetchStupi, updateStup } from "../api.js";
+import { marcheazaTot } from "../inspectie.js";
 import styles from "./StupiPage.module.css";
 
 // Data de azi in romana, de exemplu "Marți, 17 noiembrie 2026"
@@ -68,7 +69,8 @@ export default function StupiPage() {
   async function handleToggle(id) {
     const stup = stupi.find((s) => s.id === id);
     try {
-      const actualizat = await updateStup(id, { inspectat: !stup.inspectat });
+      // bifa de pe card marcheaza (sau goleste) toate criteriile inspectiei
+      const actualizat = await updateStup(id, marcheazaTot(!stup.inspectat));
       setStupi((prev) => prev.map((s) => (s.id === id ? actualizat : s)));
     } catch (err) {
       setError(err.message);
@@ -128,7 +130,7 @@ export default function StupiPage() {
       <div className={styles.grid}>
         <section className="panel">
           <h2>➕ Stup nou</h2>
-          <p className={styles.hint}>Adaugă un stup în stupină. Îl poți marca drept inspectat din listă.</p>
+          <p className={styles.hint}>Adaugă un stup în stupină. Inspecția o faci apoi din butonul 🔎 Inspectează de pe card.</p>
           <StupForm onAdd={handleAdd} />
         </section>
 

@@ -48,3 +48,9 @@
     bottom: 16px;
   }
 }
+
+@media print {
+  .zona {
+    display: none;
+  }
+}

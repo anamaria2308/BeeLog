@@ -40,6 +40,9 @@ export default function Layout() {
             <NavLink to="/" end className={navClass}>
               Stupi
             </NavLink>
+            <NavLink to="/raport" className={navClass}>
+              Raport
+            </NavLink>
             <NavLink to="/despre" className={navClass}>
               Despre
             </NavLink>

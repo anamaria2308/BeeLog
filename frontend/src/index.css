@@ -256,3 +256,40 @@ a {
   color: var(--slaba-fg);
   border-color: var(--slaba-border);
 }
+
+/* Printare / export PDF: hartie alba si culori deschise, indiferent de tema aleasa */
+@media print {
+  :root,
+  :root[data-theme="dark"],
+  :root:not([data-theme="light"]) {
+    --bg-color: #faf6ec;
+    --card-bg: #ffffff;
+    --text-main: #1f1300;
+    --text-muted: #6b4a1c;
+    --primary: #d98a06;
+    --primary-dark: #a85d02;
+    --primary-light: #fdf0cf;
+    --border-color: #e5d3a8;
+    --puternica-bg: #e3f1d4;
+    --puternica-fg: #2f6116;
+    --puternica-border: #a8cf86;
+    --medie-bg: #fdf0cf;
+    --medie-fg: #8a5a1c;
+    --medie-border: #f0c869;
+    --slaba-bg: #fbe1d6;
+    --slaba-fg: #9a3412;
+    --slaba-border: #f2a98a;
+  }
+
+  body {
+    background: #ffffff;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .panel {
+    border: none;
+    box-shadow: none;
+    padding: 0;
+  }
+}

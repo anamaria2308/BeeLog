@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { fetchStup } from "../api.js";
+import { fetchStup, updateStup } from "../api.js";
 import { ETICHETE_PUTERE, RAME_MAX } from "../constants.js";
 import PutereMeter from "../components/PutereMeter.jsx";
+import InspectieChecklist from "../components/InspectieChecklist.jsx";
+import { comutaCriteriu, formatData, stareInspectie } from "../inspectie.js";
 import styles from "./StupDetaliuPage.module.css";
 
 export default function StupDetaliuPage() {
@@ -34,6 +36,20 @@ export default function StupDetaliuPage() {
     };
   }, [id]);
 
+  // Venit din butonul "Inspecteaza" (adresa se termina cu #inspectie): derulez la lista de verificare
+  const areStup = stup !== null;
+  useEffect(() => {
+    if (areStup && window.location.hash === "#inspectie") {
+      document.getElementById("inspectie")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [areStup]);
+
+  // Intai serverul, apoi state-ul. Eroarea ajunge inapoi in lista de verificare.
+  async function handleCriteriu(cheie) {
+    const actualizat = await updateStup(stup.id, comutaCriteriu(stup, cheie));
+    setStup(actualizat);
+  }
+
   if (loading) {
     return (
       <p className="info" data-testid="loading">
@@ -55,6 +71,7 @@ export default function StupDetaliuPage() {
 
   // Ramele desenate: cate sunt in stup, din maximul posibil
   const rame = stup.rame ?? 0;
+  const { bifate, total, stare } = stareInspectie(stup);
 
   return (
     <section className={`panel ${styles.detail}`} data-testid="detail">
@@ -71,7 +88,9 @@ export default function StupDetaliuPage() {
             {stup.nume}
           </h2>
           <span className={stup.inspectat ? styles.statusDone : styles.statusPending}>
-            {stup.inspectat ? "✓ Inspectat" : "De inspectat"}
+            {stare === "inspectat" && "✓ Inspectat"}
+            {stare === "in-curs" && `În curs ${bifate}/${total}`}
+            {stare === "de-inspectat" && "De inspectat"}
           </span>
         </div>
       </div>
@@ -95,9 +114,14 @@ export default function StupDetaliuPage() {
           </span>
         </dd>
 
+        <dt>Ultima inspecție</dt>
+        <dd>{formatData(stup.dataInspectie)}</dd>
+
         <dt>ID</dt>
         <dd>#{stup.id}</dd>
       </dl>
+
+      <InspectieChecklist stup={stup} onComuta={handleCriteriu} />
     </section>
   );
 }

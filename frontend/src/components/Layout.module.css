@@ -127,3 +127,17 @@
   padding: 36px 16px 40px;
   font-size: 0.88rem;
 }
+
+/* La printare (export PDF) raman doar continutul paginii */
+@media print {
+  .header,
+  .footer {
+    display: none;
+  }
+
+  .main {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+}
