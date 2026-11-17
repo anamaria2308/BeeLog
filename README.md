@@ -146,3 +146,15 @@ Hives can be added from the page. The form is controlled and validated (name req
 max 100 chars; frames an integer between 1 and 20), and every change (add, toggle, delete)
 goes to the API before it shows up in the list. `tw.json` and the `data-testid` attributes
 prepare the app for automated checking.
+
+### Verification Checklist - Stage 7
+| ID | Requirement | Where (permalink) | How to check |
+| :--- | :--- | :--- | :--- |
+| S7-R1 | controlled form: value + onChange on every field | [StupForm.jsx#L63-L114](https://github.com/anamaria2308/BeeLog/blob/b1bc735/frontend/src/components/StupForm.jsx#L63-L114) | read |
+| S7-R2 | empty title shows an error, nothing is sent | [StupForm.jsx#L22-L45](https://github.com/anamaria2308/BeeLog/blob/b1bc735/frontend/src/components/StupForm.jsx#L22-L45) (valideaza) | submit empty, watch Network |
+| S7-R3 | added item shows in the list and survives refresh | [App.jsx#L39-L42](https://github.com/anamaria2308/BeeLog/blob/b1bc735/frontend/src/App.jsx#L39-L42) (handleAdd), [api.js#L5-L23](https://github.com/anamaria2308/BeeLog/blob/b1bc735/frontend/src/api.js#L5-L23) | add, refresh |
+| S7-R4 | toggle and delete survive refresh | [App.jsx#L44-L61](https://github.com/anamaria2308/BeeLog/blob/b1bc735/frontend/src/App.jsx#L44-L61), [api.js#L25-L34](https://github.com/anamaria2308/BeeLog/blob/b1bc735/frontend/src/api.js#L25-L34) | toggle/delete, refresh |
+| S7-R5 | button disabled while sending, form cleared only on success | [StupForm.jsx#L48-L60](https://github.com/anamaria2308/BeeLog/blob/b1bc735/frontend/src/components/StupForm.jsx#L48-L60), [StupForm.jsx#L111-L113](https://github.com/anamaria2308/BeeLog/blob/b1bc735/frontend/src/components/StupForm.jsx#L111-L113) | --delay 3000; stop API and submit |
+| S7-R6 | tw.json and the data-testid attributes from table 7.3 | [tw.json](https://github.com/anamaria2308/BeeLog/blob/b1bc735/tw.json), [StupCard.jsx#L9-L48](https://github.com/anamaria2308/BeeLog/blob/b1bc735/frontend/src/components/StupCard.jsx#L9-L48), [StupForm.jsx](https://github.com/anamaria2308/BeeLog/blob/b1bc735/frontend/src/components/StupForm.jsx) | querySelectorAll in the console |
+| S7-R7 | README Stage 7 section + AI log | [README.md](README.md), [ai-log/etapa-07.md](ai-log/etapa-07.md) | read |
+| S7-R8 | commit "Stage 7" pushed | [b1bc735](https://github.com/anamaria2308/BeeLog/commit/b1bc735) | commit history |
